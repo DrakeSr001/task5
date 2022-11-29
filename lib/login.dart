@@ -16,7 +16,10 @@ class _loginState extends State<login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login", style: TextStyle(color: Colors.black),),
+        title: Text(
+          "Login",
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.grey[300],
       ),
       body: Form(
@@ -25,10 +28,13 @@ class _loginState extends State<login> {
             keyboardType: TextInputType.emailAddress,
             style: const TextStyle(fontSize: 20, color: Colors.red),
             decoration: const InputDecoration(
-                hintText: 'Email', hintStyle: TextStyle(color: Colors.green)),
+              hintText: 'Email',
+              hintStyle: TextStyle(color: Colors.green),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 2, color: Colors.yellow),
+              ),
+            ),
           ),
-
-
           TextFormField(
             keyboardType: TextInputType.text,
             style: const TextStyle(fontSize: 20, color: Colors.blue),
