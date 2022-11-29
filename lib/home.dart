@@ -23,13 +23,13 @@ class _HomeState extends State<Home> {
   ];
 
   List listOfImages = [
-    'assets/images/one.png',
-    'assets/images/one.png',
-    'assets/images/one.png',
-    'assets/images/one.png',
-    'assets/images/one.png',
-    'assets/images/one.png',
-    'assets/images/one.png',
+    'assets/images/two.jpg',
+    'assets/images/two.jpg',
+    'assets/images/two.jpg',
+    'assets/images/two.jpg',
+    'assets/images/two.jpg',
+    'assets/images/two.jpg',
+    'assets/images/two.jpg',
   ];
 
   @override
@@ -53,144 +53,178 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      body: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-                width: MediaQuery.of(context).size.width * 0.5,
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Image.asset('assets/images/one.png')),
-          ],
-        ),
-        Divider(),
-
-        // Normal List
-        Container(
-          height: 180,
-          //
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey,
-                  ),
-                  child: Column(children: [
-                    Expanded(
-                        child: Image.asset(
-                      '${listOfImages[index]}',
-                      height: 100,
-                      fit: BoxFit.cover,
-                    )),
-                    Text('${listOfStrings[index]}'),
-                    Text('Lorem ipusem lorem...'),
-                    RatingBar.builder(
-                      initialRating: 0,
-                      itemSize: 25,
-                      minRating: 1,
-                      direction: Axis.horizontal,
-                      itemCount: 5,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                      itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      onRatingUpdate: (rating) {
-                        print(rating);
-                      },
-                    ),
-                  ]),
-                ),
-              );
-            },
-            itemCount: listOfImages.length,
-          ),
-        ),
-
-        Divider(),
-
-        // New arrivals and View more button
-        Padding(
-          padding: const EdgeInsets.only(top: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Text(
-                  'New Arrivals',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 20),
-                ),
-              ),
-              Spacer(),
-              Padding(
-                  padding: const EdgeInsets.only(right: 15),
-                  child: TextButton(
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            side: BorderSide(width: 1, color: Colors.purple)))),
-                    onPressed: () {},
-                    child: Text('View More'),
-                  ))
+              Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: Image.asset('assets/images/one.png')),
             ],
           ),
-        ),
+          Divider(),
 
-        Container(
-          height: 180,
-          //
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey[350],
-                  ),
-                  child: Column(children: [
-                    Stack(children: [
-                      Expanded(
+          // Normal List
+          Container(
+            height: 250,
+            //
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromARGB(150, 223, 211, 235),
+                    ),
+                    child: Column(children: [
+                      Container(
+                        width: 150,
+                        height: 150,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12.0),
                           child: Image.asset(
-                        '${listOfImages[index]}',
-                        height: 100,
-                        fit: BoxFit.cover,
-                      )),
+                            '${listOfImages[index]}',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 85),
-                        child: FavoriteButton(
-                          isFavorite: false,
-                          iconDisabledColor: Colors.grey[800],
-                          iconColor: Colors.purple,
-                          iconSize: 50,
-                          valueChanged: (_isFavorite) {
-                            print('Is Favorite : $_isFavorite');
+                        padding: const EdgeInsets.only(right: 75, bottom: 7),
+                        child: Text('${listOfStrings[index]}',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: Text(
+                          'Lorem ipusem lorem...',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10, top: 5),
+                        child: RatingBar.builder(
+                          initialRating: 0,
+                          itemSize: 20,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          itemCount: 5,
+                          itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          onRatingUpdate: (rating) {
+                            print(rating);
                           },
                         ),
                       ),
                     ]),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 60),
-                      child: Text('Title', style: TextStyle(fontSize: 20)),
-                    ),
-                    Text('Supporting text'),
-                  ]),
-                ),
-              );
-            },
-            itemCount: 7,
+                  ),
+                );
+              },
+              itemCount: listOfImages.length,
+            ),
           ),
-        ),
-      ]),
+
+          Divider(),
+
+          // New arrivals and View more button
+          Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: Text(
+                    'New Arrivals',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 20),
+                  ),
+                ),
+                Spacer(),
+                Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: TextButton(
+                      style: ButtonStyle(
+                          shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  side: BorderSide(
+                                      width: 1, color: Colors.purple)))),
+                      onPressed: () {},
+                      child: Text('View More'),
+                    ))
+              ],
+            ),
+          ),
+
+          Container(
+            height: 225,
+            //
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromARGB(150, 223, 211, 235),
+                    ),
+                    child: Column(children: [
+                      Stack(children: [
+                        Container(
+                          width: 150,
+                          height: 150,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12.0),
+                            child: Image.asset(
+                              '${listOfImages[index]}',
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 115),
+                          child: FavoriteButton(
+                            isFavorite: false,
+                            iconDisabledColor: Colors.grey[400],
+                            iconColor: Colors.red,
+                            iconSize: 50,
+                            valueChanged: (_isFavorite) {
+                              print('Is Favorite : $_isFavorite');
+                            },
+                          ),
+                        ),
+                      ]),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 80, top: 10),
+                        child: Text('Title',
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 32),
+                        child: Text('Supporting text',
+                            style: TextStyle(fontSize: 11)),
+                      ),
+                    ]),
+                  ),
+                );
+              },
+              itemCount: 7,
+            ),
+          ),
+        ]),
+      ),
     );
   }
 }
